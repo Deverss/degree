@@ -23,5 +23,8 @@ app.post("/add", async (req, res) => {
     }
     
 });
+app.get("/",(req,res)=>{
+    res.send("doraemon");
+})
 
 app.listen(3000, () => console.log("Server Started"));
