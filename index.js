@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const Degree = require("./degree");
-
+var path = require('path');
 var degreeRouter = require("./routers/degree");
 
 mongoose.set("strictQuery", false);
@@ -13,7 +13,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.get('/', function(req, res){
+    res.render("index");
+  });
 app.use("/api/v1", degreeRouter);
 
 app.listen(3000, () => console.log("Server Started"));
