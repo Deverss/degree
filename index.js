@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const Degree = require("./degree");
@@ -12,7 +13,9 @@ console.log("Connected to Mongo Successfully!");
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use(cors({
+  origin : 'http://localhost:3001'
+}));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.get('/', function(req, res){
