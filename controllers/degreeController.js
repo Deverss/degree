@@ -12,7 +12,9 @@ const degreeController = {
     }
   },
   get: async (req, res) => {
-    res.json("doraemon");
+    const id = req.params.id;
+    const getAddress = await Degree.findById(id);
+    res.json({data:getAddress});
   },
 };
 
